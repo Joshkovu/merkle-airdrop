@@ -31,11 +31,7 @@ contract GenerateInput is Script {
     function _createJSON() internal view returns (string memory) {
         string memory countString = vm.toString(count); // convert count to string
         string memory amountString = vm.toString(AMOUNT); // convert amount to string
-        string memory json = string.concat(
-            '{ "types": ["address", "uint"], "count":',
-            countString,
-            ',"values": {'
-        );
+        string memory json = string.concat('{ "types": ["address", "uint"], "count":', countString, ',"values": {');
         for (uint256 i = 0; i < whitelist.length; i++) {
             if (i == whitelist.length - 1) {
                 json = string.concat(
